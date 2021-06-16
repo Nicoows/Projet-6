@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', userRoutes);
 
 app.post('/api/sauces', (req, res, next) => {
-  const sauceObject = JSON.parse(req.body.sauce);
+  const sauceObject = JSON.parse(JSON.stringify(req.body));
   delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
@@ -35,13 +35,13 @@ app.post('/api/sauces', (req, res, next) => {
     usersLiked : [],
     usersDisliked : []
   });
-  thing.save()
+  sauce.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
     .catch(error => res.status(400).json({ error }));
 });
 
 app.get('/api/sauces', (req, res, next) => {
-  Thing.find()
+  Sauce.find()
     .then(things => res.status(200).json(things))
     .catch(error => res.status(400).json({ error }));
 })
