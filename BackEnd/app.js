@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
-const Sauce = require('./Models/Sauce');
+const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 
@@ -25,11 +25,13 @@ app.use(bodyParser.json());
 
 app.use('/api/auth', userRoutes);
 
-app.post('/api/sauces', (req, res, next) => {
-  const sauceObject = JSON.parse(JSON.stringify(req.body));
-  delete sauceObject._id;
-  const sauce = new Sauce({
-    ...sauceObject,
+app.use('/api', sauceRoutes);
+
+/*app.post('/api/sauces', (req, res, next) => {
+  delete req.body._id;
+  const sauce = new Sauce({ 
+    ...req.body.sauce,
+    imageUrl : "",
     likes : 0,
     dislikes : 0,
     usersLiked : [],
@@ -44,6 +46,6 @@ app.get('/api/sauces', (req, res, next) => {
   Sauce.find()
     .then(things => res.status(200).json(things))
     .catch(error => res.status(400).json({ error }));
-})
+})*/
 
 module.exports = app;
