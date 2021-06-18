@@ -21,31 +21,10 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use('/api/auth', userRoutes);
 
-app.use('/api', sauceRoutes);
-
-/*app.post('/api/sauces', (req, res, next) => {
-  delete req.body._id;
-  const sauce = new Sauce({ 
-    ...req.body.sauce,
-    imageUrl : "",
-    likes : 0,
-    dislikes : 0,
-    usersLiked : [],
-    usersDisliked : []
-  });
-  sauce.save()
-    .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-    .catch(error => res.status(400).json({ error }));
-});
-
-app.get('/api/sauces', (req, res, next) => {
-  Sauce.find()
-    .then(things => res.status(200).json(things))
-    .catch(error => res.status(400).json({ error }));
-})*/
+app.use('/api/sauces', sauceRoutes);
 
 module.exports = app;
