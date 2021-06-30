@@ -1,12 +1,19 @@
 const express = require('express');
 
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const bodyParser = require('body-parser');
-
+const path = require('path');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
 const app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
 
 mongoose.connect('mongodb+srv://marsouin97:ninibrown31@cluster0.ntj6t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -22,6 +29,12 @@ app.use((req, res, next) => {
   });
 
 app.use(express.json());
+
+app.use(helmet());
+
+app.use(limiter);
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/api/auth', userRoutes);
 
