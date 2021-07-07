@@ -17,8 +17,10 @@
     "fs": "0.0.1-security",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
+    "maskdata": "^1.1.6",
     "mongoose": "^5.12.13",
     "mongoose-unique-validator": "^2.0.3",
+    "mongoose-validator": "^2.1.0",
     "multer": "^1.4.2",
     "ratelimiter": "^3.4.1"
   }

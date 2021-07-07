@@ -15,7 +15,7 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 });
 
-mongoose.connect('mongodb+srv://marsouin97:ninibrown31@cluster0.ntj6t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://marsouin31:tgbyuihjklmop31@cluster0.ntj6t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
