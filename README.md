@@ -18,6 +18,8 @@ Faire tourner le Frontend
 
 Faire tourner le Backend
 
+- Renommer le fichier ".env.test" en ".env"
+- Mettre vos identifiants de connexion à la base de données dans les guillemets. Par exemple : "mongodb+srv://{Identifiant}:{Mot de passe}@cluster0.ntj6t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 - Ouvrir le terminal sur ce dossier.
 - Pour utiliser le serveur, chargez le package nodemon : npm install -g nodemon.
 - Puis lancez le serveur: nodemon server.
