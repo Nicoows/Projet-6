@@ -1,5 +1,6 @@
 # Projet-6
 
+Ce projet consistait à effectuer la partie Back-End d'une application de sauce en utilisant Node.js avec le frameworks express.js et une base de donnée MongoDB.
 
 Installation
 
